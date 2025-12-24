@@ -2,9 +2,9 @@ services:
   app:
     container_name: next-app
     image: ghcr.io/ho-sittichai/my-profile:latest
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
       - 3000:3000
