@@ -1,9 +1,10 @@
 services:
   app:
     container_name: next-app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/ho-sittichai/my-profile:latest
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     restart: always
     ports:
       - 3000:3000
@@ -11,3 +12,10 @@ services:
       - .env
     environment:
       - NODE_ENV=production
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
+    restart: always
